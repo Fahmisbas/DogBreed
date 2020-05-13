@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+        <variable
+            name="dog"
+            type="com.fahmisbas.dogs.model.DogBreed" />
+
+        <variable
+            name="listener"
+            type="com.fahmisbas.dogs.view.DogClickListener" />
+    </data>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:onClick="@{listener::onDogClicked}"
         android:layout_height="125dp">
+
+        <TextView
+            android:id="@+id/dogId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@{String.valueOf(dog.uuid)}"/>
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="0dp"
+            android:imageUrl="@{dog.imageUrl}"
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:padding="4dp"/>
@@ -23,7 +42,7 @@
 
             <TextView
                 android:id="@+id/name"
-                android:text="Dog Name"
+                android:text="@{dog.dogBreed}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/Title"/>
@@ -33,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/lifespan"
                 style="@style/Text"
-                android:text="Lifespan"/>
+                android:text="@{dog.lifeSpan}"/>
 
         </LinearLayout>
 

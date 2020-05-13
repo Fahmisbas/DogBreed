@@ -5,22 +5,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 
 import com.fahmisbas.dogs.R
+import com.fahmisbas.dogs.databinding.FragmentDetailBinding
 import com.fahmisbas.dogs.util.getProgressDrawable
 import com.fahmisbas.dogs.util.loadImage
 import com.fahmisbas.dogs.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.fragment_detail.*
 
-class DetailFragment : Fragment() {
+class DetailFragment() : Fragment() {
 
     private var dogUuid = 0
     private lateinit var viewModel: DetailViewModel
 
+    private lateinit var dataBinding: FragmentDetailBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+        dataBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_detail,container,false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,14 +44,7 @@ class DetailFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.dogs.observe(this, Observer { dogs ->
             dogs?.let {it ->
-                dogName.text = dogs.dogBreed
-                dogPurpose.text = dogs.bredFor
-                dogTemprament.text = dogs.temperament
-                dogLifespan.text = dogs.lifeSpan
-
-                context?.let {
-                    dogImage.loadImage(dogs.imageUrl, getProgressDrawable(it))
-                }
+                dataBinding.dog = dogs
             }
         })
     }

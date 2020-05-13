@@ -2,7 +2,6 @@ package com.fahmisbas.dogs.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.fahmisbas.dogs.model.DogBreed
 import com.fahmisbas.dogs.model.DogDatabase
 import kotlinx.coroutines.launch

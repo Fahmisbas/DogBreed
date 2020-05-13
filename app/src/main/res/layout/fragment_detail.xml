@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="dog"
+            type="com.fahmisbas.dogs.model.DogBreed" />
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:scaleType="fitCenter"
-            android:src="@mipmap/ic_launcher"
+            android:imageUrl="@{dog.imageUrl}"
             android:minHeight="200dp"/>
 
         <TextView
@@ -24,7 +30,7 @@
             android:layout_centerHorizontal="true"
             android:layout_margin="4dp"
             style="@style/Title"
-            android:text="Dog Name"/>
+            android:text="@{dog.dogBreed}"/>
 
         <TextView
             android:id="@+id/dogPurpose"
@@ -34,7 +40,7 @@
             android:layout_centerHorizontal="true"
             android:layout_margin="4dp"
             style="@style/Text"
-            android:text="Dog Purpose"/>
+            android:text="@{dog.bredFor}"/>
 
         <TextView
             android:id="@+id/dogTemprament"
@@ -44,7 +50,7 @@
             android:layout_centerHorizontal="true"
             android:layout_margin="4dp"
             style="@style/Text"
-            android:text="Dog Temprament"/>
+            android:text="@{dog.temperament}"/>
 
         <TextView
             android:id="@+id/dogLifespan"
@@ -54,7 +60,7 @@
             android:layout_centerHorizontal="true"
             android:layout_margin="4dp"
             style="@style/Text"
-            android:text="Dog Lifespan"/>
+            android:text="@{dog.lifeSpan}"/>
 
     </RelativeLayout>
 </layout>
