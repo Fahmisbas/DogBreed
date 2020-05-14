@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.fahmisbas.dogs.model.DogBreed
 import com.fahmisbas.dogs.model.DogDatabase
 import com.fahmisbas.dogs.model.DogsApiService
+import com.fahmisbas.dogs.util.NotificationHelper
 import com.fahmisbas.dogs.util.SharedPreferencesHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -59,6 +60,7 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
                     override fun onSuccess(dogList: List<DogBreed>) {
                         storeDogsLocally(dogList)
                         Toast.makeText(getApplication(),"Dog Retrieved From endpoint",Toast.LENGTH_SHORT).show()
+                        NotificationHelper(getApplication()).createNotification()
                     }
 
                     override fun onError(e: Throwable) {
