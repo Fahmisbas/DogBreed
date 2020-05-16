@@ -9,8 +9,6 @@ import com.bumptech.glide.request.RequestOptions
 import com.fahmisbas.dogs.R
 import kotlinx.android.synthetic.main.fragment_detail.view.*
 
-
-
 val PERMISSION_SEND_SMS = 234
 
 fun getProgressDrawable(context : Context) : CircularProgressDrawable {
